@@ -1,0 +1,46 @@
+{
+  "Sistema": {
+    "Nome": "Genesis_Altivon_Sys",
+    "Versao": "1.1.5",
+    "Ambiente": "ProducaoLocal",
+    "ModoInfraestrutura": "NativoWindowsXampp"
+  },
+  "BancoDeDados": {
+    "Provedor": "MySQL",
+    "Servidor": "127.0.0.1",
+    "Porta": 3309,
+    "NomeBanco": "GenesisAltivonDb",
+    "Usuario": "altivon_usr",
+    "Senha": "AltivonPassword123!",
+    "Charset": "utf8mb4",
+    "ConnectionString": "Server=127.0.0.1;Port=3309;Database=GenesisAltivonDb;Uid=altivon_usr;Pwd=AltivonPassword123!;CharSet=utf8mb4;SslMode=Preferred;"
+  },
+  "SegurancaJwt": {
+    "Emissor": "GenesisAltivonSys.IAM",
+    "Audiencia": "GenesisAltivonSys.ERP",
+    "ChaveAssinatura": "G3n3s1s_Alt1v0n_Sys_2026_ChaveMestra_HMAC_SHA512_Segura_9948172635!",
+    "ExpiracaoAccessTokenMinutos": 15,
+    "ExpiracaoRefreshTokenDias": 7,
+    "DiretorioChavesDataProtection": "D:\\Genesis_Altivon_Sys\\StorageDados\\chaves-dpapi"
+  },
+  "Cache": {
+    "Habilitado": true,
+    "Provedor": "MemoriaLocalDistribuida",
+    "TempoExpiracaoSegundos": 300
+  },
+  "Armazenamento": {
+    "Provedor": "SistemaArquivosLocal",
+    "DiretorioRaiz": "D:\\Genesis_Altivon_Sys\\StorageDados",
+    "Buckets": {
+      "XmlFiscais": "xml-fiscais",
+      "BoletosPdf": "boletos-pdf",
+      "AnexosContratos": "anexos-contratos",
+      "Backups": "backups-idempotentes"
+    }
+  },
+  "Diagnosticos": {
+    "DiretorioLogs": "D:\\Genesis_Altivon_Sys\\Logs",
+    "NivelMinimo": "Information",
+    "RetencaoDias": 30
+  }
+}

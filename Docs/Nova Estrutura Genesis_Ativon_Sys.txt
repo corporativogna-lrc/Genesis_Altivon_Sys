@@ -1,0 +1,242 @@
+📁 [Genesis_Altivon_Sys]
+│
+├── GenesisAltivonSys.sln
+├── GenesisAltivonSys.csproj
+├── pom.xml
+├── package.json
+├── tailwind.config.js
+├── configuracoes.json
+├── .gitignore
+├── README.md
+│
+├── 📁 BackEnd
+│   │
+│   ├── 📁 CadastrosCorporativos (Master Data)
+│   │   ├── 📁 Clientes
+│   │   │   ├── ClienteEndpoints.cs
+│   │   │   ├── ClienteServicos.java
+│   │   │   └── ClienteModelos.cs 
+│   │   ├── 📁 Fornecedores
+│   │   │   ├── FornecedorEndpoints.cs
+│   │   │   ├── FornecedorServicos.java
+│   │   │   └── FornecedorModelos.cs 
+│   │   ├── 📁 ProdutosServicos
+│   │   │   ├── ProdutoEndpoints.cs
+│   │   │   ├── ProdutoServicos.java
+│   │   │   └── ProdutoModelos.cs 
+│   │   ├── 📁 EmpresasFiliais
+│   │   │   ├── EmpresaEndpoints.cs
+│   │   │   ├── EmpresaServicos.java
+│   │   │   └── EmpresaModelos.cs 
+│   │   └── 📁 Enderecamento
+│   │       ├── CepEndpoints.cs
+│   │       ├── EnderecoServicos.java
+│   │       └── EnderecoModelos.cs
+│   │ 
+│   ├── 📁 OperacaoPDV (Omnicanal)
+│   │   ├── 📁 VendaBalcao
+│   │   │   ├── PdvEndpoints.cs
+│   │   │   ├── PdvServicos.cs
+│   │   │   └── PdvModelos.cs
+│   │   ├── 📁 CaixaOperacoes
+│   │   │   ├── CaixaEndpoints.cs
+│   │   │   ├── CaixaServicos.cs
+│   │   │   └── CaixaModelos.cs
+│   │   └── 📁 TrocasDevolucoes
+│   │       ├── DevolucaoEndpoints.cs
+│   │       ├── DevolucaoServicos.cs
+│   │       └── DevolucaoModelos.cs
+│   │
+│   ├── 📁 GestaoCompras (SCM)
+│   │   ├── 📁 SolicitacoesCotacoes
+│   │   │   ├── CotacaoEndpoints.cs
+│   │   │   ├── CotacaoServicos.java
+│   │   │   └── CotacaoModelos.cs
+│   │   └── 📁 PedidosRecebimentos
+│   │       ├── PedidoCompraEndpoints.cs
+│   │       ├── PedidoCompraServicos.java
+│   │       └── PedidoCompraModelos.cs
+│   │
+│   ├── 📁 EstoqueLogistica (WMS e TMS)
+│   │   ├── 📁 ControleSaldosWMS
+│   │   │   ├── SaldoFisicoEndpoints.cs
+│   │   │   ├── MovimentacaoServicos.java
+│   │   │   └── InventarioModelos.cs
+│   │   ├── 📁 Rastreabilidade
+│   │   │   ├── LoteSerialEndpoints.cs
+│   │   │   ├── RastreabilidadeServicos.java
+│   │   │   └── KardexModelos.cs
+│   │   └── 📁 FreteTransporteTMS
+│   │       ├── CotacaoFreteEndpoints.cs
+│   │       ├── ExpedicaoServicos.java
+│   │       └── RomaneioModelos.cs
+│   │
+│   ├── 📁 FinanceiroContabil (FICO)
+│   │   ├── 📁 ContasPagarReceber
+│   │   │   ├── TituloFinanceiroEndpoints.cs
+│   │   │   ├── TituloFinanceiroServicos.java
+│   │   │   └── TituloFinanceiroModelos.cs
+│   │   ├── 📁 TesourariaCaixa
+│   │   │   ├── ConciliacaoBancariaEndpoints.cs
+│   │   │   ├── FluxoCaixaServicos.java
+│   │   │   └── TesourariaModelos.cs
+│   │   └── 📁 Controladoria
+│   │       ├── DreBalanceteEndpoints.cs
+│   │       ├── FechamentoContabilServicos.java
+│   │       └── PlanoContasModelos.cs
+│   │
+│   ├── 📁 FiscalTributario
+│   │   ├── 📁 EmissaoDocumentos
+│   │   │   ├── NfeNfceEndpoints.cs
+│   │   │   ├── CteMdfeServicos.java
+│   │   │   └── DocumentoFiscalModelos.cs
+│   │   └── 📁 ApuracaoRegras
+│   │       ├── RegraTributariaEndpoints.cs
+│   │       ├── SpedApuracaoServicos.java
+│   │       └── ImpostoModelos.cs
+│   │
+│   ├── 📁 ManufaturaOperacoes (MES/OPS)
+│   │   ├── 📁 Producao
+│   │   │   ├── OrdemProducaoEndpoints.cs
+│   │   │   ├── ApontamentoServicos.java
+│   │   │   └── EstruturaBomModelos.cs
+│   │   └── 📁 ManutencaoAtivos
+│   │       ├── OrdemManutencaoEndpoints.cs
+│   │       ├── ControleAtivosServicos.java
+│   │       └── OeeModelos.cs
+│   │
+│   ├── 📁 RecursosHumanos (HCM)
+│   │   ├── 📁 DepartamentoPessoal
+│   │   │   ├── ColaboradorEndpoints.cs
+│   │   │   ├── FolhaPagamentoServicos.java
+│   │   │   └── PontoEscalaModelos.cs
+│   │   └── 📁 SaudeSeguranca
+│   │       ├── EsocialEndpoints.cs
+│   │       ├── SaudeOcupacionalServicos.java
+│   │       └── EpiModelos.cs
+│   │
+│   ├── 📁 ComercialCrmPortal
+│   │   ├── 📁 FunilAtendimento
+│   │   │   ├── LeadOportunidadeEndpoints.cs
+│   │   │   ├── TicketAtendimentoServicos.java
+│   │   │   └── FunilModelos.cs
+│   │   ├── 📁 ECommerceVitrine
+│   │   │   ├── CatalogoPortalEndpoints.cs
+│   │   │   ├── CarrinhoCheckoutServicos.java
+│   │   │   └── LojaVitrineModelos.cs
+│   │   └── 📁 MarketingPromocoes
+│   │       ├── CampanhaSegmentoEndpoints.cs
+│   │       ├── CupomFidelidadeServicos.java
+│   │       └── MarketingModelos.cs
+│   │
+│   ├── 📁 JuridicoProjetos
+│   │   ├── 📁 ContratosDistratos
+│   │   │   ├── ContratoCorporativoEndpoints.cs
+│   │   │   ├── ProcessoJuridicoServicos.java
+│   │   │   └── AssinaturaDigitalModelos.cs
+│   │   └── 📁 GestaoProjetos
+│   │       ├── WbsCronogramaEndpoints.cs
+│   │       ├── IndicadorEsgServicos.java
+│   │       └── PortfolioModelos.cs
+│   │
+│   ├── 📁 IntegracoesExternas
+│   │   ├── 📁 MarketplacesDropshipping
+│   │   │   ├── MercadoLivreAmazonEndpoints.cs
+│   │   │   ├── ShopeeShopifyServicos.java
+│   │   │   └── SincronizacaoModelos.cs
+│   │   └── 📁 RedesAnunciosAds
+│   │       ├── MetaGoogleAdsEndpoints.cs
+│   │       └── ConversionsApiServicos.java
+│   │
+│   ├── 📁 GovernancaRiscosConformidade (GRC / IAM)
+│   │   ├── 📁 IdentidadeAcessos
+│   │   │   ├── UsuarioRbacEndpoints.cs
+│   │   │   ├── TenantMfaServicos.java
+│   │   │   └── AcessoModelos.cs
+│   │   └── 📁 AuditoriaPrivacidade
+│   │       ├── LogAuditoriaEndpoints.cs
+│   │       ├── ConsentimentoLgpdServicos.java
+│   │       └── RiscoCorporativoModelos.cs
+│   │
+│   ├── 📁 FluxoTrabalho
+│   │   └── 📁 WorkflowAprovacoes
+│   │       ├── MotorWorkflowEndpoints.cs
+│   │       ├── TransicaoEstadoServicos.java
+│   │       └── AprovacaoAlcadaModelos.cs
+│   │
+│   └── 📁 AssistentesInteligenciaArtificial
+│       ├── IaYaraComercialEndpoints.cs
+│       ├── IaSophiaAdministrativaServicos.java
+│       └── OpenAIChavesModelos.cs
+│
+├── 📁 FrontEnd (React.js + Tailwind CSS)
+│   │
+│   ├── 📁 Telas (Pages)
+│   │   ├── TelaPainelCockpit.jsx
+│   │   ├── TelaPdvOmnicanal.jsx
+│   │   ├── TelaGestaoEstoqueWms.jsx
+│   │   ├── TelaGestaoCompras.jsx
+│   │   ├── TelaContasPagarReceber.jsx
+│   │   ├── TelaConciliacaoBancaria.jsx
+│   │   ├── TelaEmissaoFiscal.jsx
+│   │   ├── TelaExpedicaoTms.jsx
+│   │   ├── TelaApontamentoMes.jsx
+│   │   ├── TelaRecursosHumanosHcm.jsx
+│   │   ├── TelaCrmAtendimento.jsx
+│   │   ├── TelaMarketplacesDrop.jsx
+│   │   └── TelaGovernancaRbac.jsx
+│   │
+│   ├── 📁 Componentes (Components)
+│   │   ├── CatalogoOmnicanalViewer.jsx
+│   │   ├── TabelaAuditoriaImutavel.jsx
+│   │   ├── CardResumoFinanceiroDinamico.jsx
+│   │   ├── SeletorTenantMultiempresa.jsx
+│   │   ├── ChatbotYaraComercial.jsx
+│   │   └── BannerConsentimentoLgpd.jsx
+│   │
+│   ├── 📁 ServicosVisuais (Services / API Clients)
+│   │   ├── ClienteApiCentral.js
+│   │   ├── GerenciadorSessaoMfa.js
+│   │   ├── InterceptorAutenticacao.js
+│   │   ├── RastreadorEventosMarketing.js
+│   │   └── ConectorWebhooksIdempotencia.js
+│   │
+│   └── 📁 ModelosVisuais (Types / Interfaces)
+│       ├── PedidoVisaoModelo.js
+│       ├── ExtratoConciliacaoVisaoModelo.js
+│       ├── LeadFunilVisaoModelo.js
+│       ├── SaldoFisicoVisaoModelo.js
+│       └── PerfilRbacVisaoModelo.js
+│
+├── 📁 Infraestrutura
+│   ├── 📁 BancoDeDados
+│   │   ├── ContextoBancoRelacional.cs
+│   │   ├── ConfigNosqlRedis.java
+│   │   └── GerenciadorEsquemaUnificado.cs
+│   ├── 📁 Seguranca
+│   │   ├── GeradorTokenJwtMfa.cs
+│   │   ├── CofreSegredos.java
+│   │   └── PoliticasTenantRbac.cs
+│   ├── 📁 IntegracoesExternas
+│   │   ├── ClienteApiSefaz.cs
+│   │   ├── ClienteApiOpenAI.java
+│   │   ├── ClienteApiMelhorEnvio.cs
+│   │   └── ConectoresMarketplaces.java
+│   ├── 📁 Armazenamento
+│   │   ├── ServicoMinIOAnexos.cs
+│   │   └── ServicoBackupIdempotente.java
+│   └── 📁 Diagnosticos
+│       ├── ObservabilidadeOpenTelemetry.cs
+│       └── RegistradorLogsSerilog.java
+│
+└── 📁 Compartilhado
+    ├── 📁 Respostas
+    │   ├── RespostaApiPadronizada.cs
+    │   └── PaginacaoMetadados.java
+    ├── 📁 Contratos
+    │   └── ContratosSla.cs
+    └── 📁 Enumeradores
+        ├── EnumStatusFiscal.cs
+        ├── EnumEstadoWorkflow.java
+        ├── EnumCanalVenda.cs
+        └── EnumCriticidadeRisco.java

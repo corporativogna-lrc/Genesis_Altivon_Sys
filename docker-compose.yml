@@ -1,0 +1,63 @@
+services:
+  mysql-genesis:
+    image: mysql:8.0
+    container_name: genesis-mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: RootPassword123!
+      MYSQL_DATABASE: GenesisAltivonDb
+      MYSQL_USER: altivon_usr
+      MYSQL_PASSWORD: AltivonPassword123!
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pRootPassword123!"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  redis-cache:
+    image: redis:7.2-alpine
+    container_name: genesis-redis-cache
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass RedisSecretKey123!
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "RedisSecretKey123!", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  minio-storage:
+    image: minio/minio:latest
+    container_name: genesis-minio-s3
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin123
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+    restart: unless-stopped
+
+  seq-logs:
+    image: datalust/seq:latest
+    container_name: genesis-seq-logs
+    environment:
+      ACCEPT_EULA: "Y"
+    ports:
+      - "5341:80"
+    volumes:
+      - seq_data:/data
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+  minio_data:
+  seq_data:

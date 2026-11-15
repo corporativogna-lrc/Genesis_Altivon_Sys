@@ -1,0 +1,22 @@
+# .NET / Visual Studio
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+# Java / Maven
+target/
+
+# Node / Front-End
+node_modules/
+dist/
+
+# Segredos e ambiente local
+.env
+.env.*
+*.pfx
+
+# Sistema
+.DS_Store
+Thumbs.db
