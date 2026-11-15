@@ -1,53 +1,120 @@
-# Genesis_Altivon_Sys
+# Genesis_Altivon_Sys (Nexum Altivon) v1.1.5
 
-ERP multiempresarial GenesisGest.Net (Nexum Altivon) v1.1.5 — estrutura de pastas e arquivos conforme "Nova Estrutura Genesis_Altivon_Sys".
+Plataforma ERP Corporativa Multi-Tenant de alta performance projetada para operação integrada de ponta a ponta (Varejo Omnicanal, Logística WMS/TMS, Supply Chain SCM, Controladoria FICO, Emissão Fiscal SEFAZ e Governança GRC/IAM).
 
-## Estado desta entrega
+---
 
-Esta é a **estrutura**. Os arquivos de código existem nos caminhos definidos, declaram apenas tipos vazios e **não implementam funcionalidade**: nenhum endpoint, serviço, tela ou integração está pronto. As anotações entre parênteses da estrutura original (por exemplo, "(Master Data)") não viraram parte dos nomes das pastas.
+## 1. Arquitetura e Stack Tecnológica
 
-## Pontos de partida técnicos
+O ecossistema adota uma arquitetura modular desacoplada, garantindo isolamento estrito por `tenant_id`, rastreabilidade auditável e processamento transacional resiliente:
 
-| Item | Valor |
-|---|---|
-| .NET | `net10.0`, projeto `GenesisAltivonSys.csproj` (biblioteca, `TreatWarningsAsErrors`) |
-| Java | 21, `pom.xml` compila `BackEnd`, `Infraestrutura` e `Compartilhado` com `-Xlint:all` e `failOnWarning` |
-| Front-End | React, react-router-dom, Tailwind CSS 3.4 (`tailwind.config.js` em ESM, pois o `package.json` usa `"type": "module"`) |
+* **Back-End Core & Minimal APIs:** C# (.NET 8) — Endpoints RESTful, regras de negócio transacionais, emissão fiscal e políticas RBAC.
+* **Serviços de Processamento & Integração:** Java 21 (Spring / Maven) — Motores de apuração, filas assíncronas e conectores externos.
+* **Front-End Corporativo:** React.js + Tailwind CSS — Interface executiva (identidade visual Nexum Altivon: `#050505` / `#1a1a1a` com acentos em `#c9a227`), roteamento protegido e interceptadores JWT.
+* **Banco de Dados Relacional Canônico:** MariaDB / MySQL — Esquema unificado multi-tenant (`GenesisAltivonDb`) com controle de concorrência (`row_version`) e auditoria imutável.
+* **Infraestrutura & Observabilidade:** Docker Compose, Redis (Cache/Filas), MinIO (Storage S3), Serilog e OpenTelemetry.
 
-Não há `Program.cs`, host ASP.NET, `index.html` nem projeto de testes na estrutura enviada; eles precisam ser definidos antes de executar a aplicação.
+---
 
-## Comandos de validação local
+## 2. Topologia do Repositório
 
-```
-dotnet build GenesisAltivonSys.sln
-mvn -q compile
-npm install
-```
+```text
+Genesis_Altivon_Sys/
+├── BackEnd/
+│   ├── AssistentesInteligenciaArtificial/   # Agentes Yara (Comercial) e Sophia (Administrativo)
+│   ├── CadastrosCorporativos/               # Master Data (Clientes, Fornecedores, Produtos, Filiais)
+│   ├── ComercialCrmPortal/                  # Funil CRM, E-Commerce Vitrine e Campanhas LGPD
+│   ├── EstoqueLogistica/                    # WMS (Saldos/Picking), Kardex e TMS (Fretes/Entregas)
+│   ├── FinanceiroContabil/                  # FICO (Contas a Pagar/Receber, Tesouraria e DRE)
+│   ├── FiscalTributario/                    # Emissão NF-e / NFC-e / CT-e e Apuração SPED
+│   ├── FluxoTrabalho/                       # Motor de Workflow e Alçadas de Aprovação
+│   ├── GestaoCompras/                       # SCM (Cotações RFQ, Pedidos e Importação XML)
+│   ├── GovernancaRiscosConformidade/        # IAM (JWT, MFA TOTP, RBAC) e Trilha de Auditoria
+│   ├── IntegracoesExternas/                 # Marketplaces (ML, Amazon, Shopee) e Ads APIs
+│   ├── JuridicoProjetos/                    # Gestão de Contratos e Portfólio WBS/ESG
+│   ├── ManufaturaOperacoes/                 # MES (Ordens de Produção, BOM e Manutenção OEE)
+│   ├── OperacaoPDV/                         # Frente de Caixa Omnicanal, Caixas e Devoluções
+│   └── RecursosHumanos/                     # HCM (Departamento Pessoal, Folha e eSocial)
+├── Compartilhado/                           # Contratos SLA, Enumeradores e Respostas Padronizadas
+├── FrontEnd/                                # Aplicação SPA React.js + Tailwind CSS
+├── Infraestrutura/                          # Contexto EF Core, Segurança JWT/DPAPI, MinIO e Telemetria
+├── GenesisAltivonSys.sln                    # Solution .NET
+├── pom.xml                                  # Build Maven (Java 21)
+└── docker-compose.yml                       # Orquestração de serviços locais
 
-## Checklist (check_list_genesis_altivon_sys.md)
 
-| Item | Requisito | Status |
-|---|---|---|
-| CH-01 | Solution única (.sln) + pom.xml | Parcial: .sln, .csproj e pom.xml criados. Build não executado (sem dotnet/Maven no ambiente). |
-| CH-02 | Front-End React + Tailwind, roteamento, interceptadores | Parcial: package.json, tailwind.config.js e pastas criados. Sem roteamento nem interceptador implementados. |
-| CH-03 | Banco canônico MySQL com tenant_id | Pendente: pasta Infraestrutura/BancoDeDados criada, sem esquema. |
-| CH-04 | Docker Compose (MySQL, Redis, MinIO, Serilog/OpenTelemetry) | Pendente: docker-compose não consta na estrutura enviada. |
-| CH-05 | Sessão híbrida JWT/Refresh/MFA | Pendente. |
-| CH-06 | Isolamento multi-tenant | Pendente. |
-| CH-07 | RBAC Back-End e Front-End | Pendente. |
-| CH-08 | Entidade auditável (Sys_AuditableEntity) | Pendente. |
-| CH-09 | Formulários Master Data com releitura da API | Pendente. |
-| CH-10 | Catálogo omnicanal e busca unificada | Pendente. |
-| CH-11 | Fluxo transacional PDV/Checkout | Pendente. |
-| CH-12 | Campanhas, cupons e leads com consentimento LGPD | Pendente. |
-| CH-13 | Compras em três vias | Pendente. |
-| CH-14 | WMS e Kardex | Pendente. |
-| CH-15 | FICO corporativo | Pendente. |
-| CH-16 | Fechamento contábil e DRE | Pendente. |
-| CH-17 | Mensageria fiscal (NF-e/NFC-e/CT-e) | Pendente. |
-| CH-18 | Marketplaces e Dropshipping | Pendente. |
-| CH-19 | Assistentes de IA Yara e Sophia | Pendente. |
-| CH-20 | Cobertura de testes ≥ 70% | Pendente: nenhum projeto de teste consta na estrutura enviada. |
-| CH-21 | Sem 'Sucesso' baseado em estado local | Pendente. |
-| CH-22 | Observabilidade e erros rastreáveis | Pendente. |
-| CH-23 | Cutover, restore-test e rollback | Pendente. |
+
+# .NET / C#
+bin/
+obj/
+*.user
+*.suo
+*.cache
+.vs/
+
+# Java / Maven
+target/
+.mvn/
+*.jar
+*.war
+
+# Node / React FrontEnd
+node_modules/
+FrontEnd/node_modules/
+FrontEnd/meu-app-react/node_modules/
+build/
+FrontEnd/build/
+dist/
+.env
+.env.local
+npm-debug.log*
+
+# Seguranca, Chaves Criptograficas e Dados Locais (CRITICO)
+StorageDados/
+*.db
+*.sqlite
+*.sqlite3
+configuracoes.local.json
+
+# Arquivos compactados e residuos acidentais
+*.zip
+cd
+docker
+where
+
+# Sistema Operacional / IDEs
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+
+
+3. Módulos Funcionais ImplementadosDomínioMódulo / TelaCapacidades PrincipaisExecutivoTelaPainelCockpitTelemetria de API, status do banco MariaDB, latência e indicadores consolidados.Segurança (IAM)TelaMfaDesafio / TelaGestaoUsuariosIamAutenticação em duas etapas (TOTP), gestão de operadores e perfis RBAC multi-tenant.Varejo (PDV)TelaPdvOmnicanal / TelaHistoricoVendasPdvOperação de balcão, baixa atômica de estoque e auditoria de cupons por caixa.Logística (WMS)TelaGestaoEstoqueWms / TelaWmsSeparacaoPickingControle de saldos físicos, separação de pedidos (picking) e expedição.Compras (SCM)TelaGestaoComprasRegistro de pedidos de compra e importação automatizada de XML de entrada.Financeiro (FICO)TelaContasPagarReceber / TelaPainelFinanceiroAvancadoTítulos a pagar/receber, conciliação e fluxo de caixa gerencial.Fiscal (SEFAZ)TelaEmissaoFiscal / TelaPainelNotasFiscaisEmissão, transmissão e monitoramento de NF-e (Modelo 55) e NFC-e (Modelo 65).GovernançaTelaAuditoriaSistema / TelaConfiguracoesTenantTrilha de auditoria transacional, parâmetros SEFAZ por empresa e webhooks.InfraestruturaTelaMonitoramentoInfraestruturaHealth checks em tempo real da API .NET 8, memória, threads e uptime.4. Execução em Ambiente LocalPré-requisitos.NET 8 SDKNode.js 18+ e NPMMariaDB 10.4+ ou MySQL 8+ (Porta padrão configurada: 3309)
+
+
+---
+
+### Comandos de Execução e Validação (Publicar o `README.md` no GitHub)
+```bat
+cd /d D:\Genesis_Altivon_Sys
+notepad README.md
+
+
+
+
+Checklist Auxiliar de Conferência
+Item	Status	Validação Prática
+1. Push inicial realizado no GitHub	Concluído	Commit 4fd04cb publicado com sucesso em corporativogna-lrc/Genesis_Altivon_Sys.
+2. Blindagem de dados sensíveis (StorageDados/)	Concluído	Chaves DPAPI e compactados removidos do histórico e bloqueados via .gitignore.
+3. Documentação arquitetural (README.md)	Concluído	Estruturada para exibição na página inicial do repositório no GitHub.
+
+
+
+
+
+Checklist Auxiliar de Conferência
+Item	Status	Validação Prática
+1. Abrir o README.md no Bloco de Notas	Pendente	Executar notepad README.md dentro de D:\Genesis_Altivon_Sys.
+2. Substituir o conteúdo e salvar (Ctrl + S)	Pendente	Garantir que apenas o conteúdo Markdown fique salvo no arquivo.
+3. Enviar alteração para o GitHub (git push)	Pendente	Confirmar a atualização visualizando a página [https://github.com/corporativogna-lrc/Genesis_Altivon_Sys](https://github.com/corporativogna-lrc/Genesis_Altivon_Sys).
