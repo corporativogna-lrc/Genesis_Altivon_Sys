@@ -1,4 +1,4 @@
-name: CI/CD & Cloudflare Pages Deploy
+name: CI/CD & GitHub Pages Deploy
 
 on:
   push:
@@ -26,12 +26,16 @@ jobs:
     - name: Run Unit Tests
       run: dotnet test GenesisAltivonSys.sln --configuration Release --no-build --verbosity normal
 
-  deploy-cloudflare-pages:
+  deploy-frontend-pages:
     needs: build-backend-and-test
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      deployments: write
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
     - uses: actions/checkout@v4
 
@@ -50,9 +54,14 @@ jobs:
       working-directory: ./FrontEnd
       run: npm run build
 
-    - name: Publish to Cloudflare Pages
-      uses: cloudflare/wrangler-action@v3
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        command: pages deploy FrontEnd/dist --project-name=genesis-altivon-sys
+        path: './FrontEnd/dist'
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
