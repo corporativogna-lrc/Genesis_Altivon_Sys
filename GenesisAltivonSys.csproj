@@ -15,10 +15,14 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
   </ItemGroup>
 
-  <ItemGroup>
+<ItemGroup>
     <None Update="configuracoes.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Testes\**" />
   </ItemGroup>
 
 </Project>
