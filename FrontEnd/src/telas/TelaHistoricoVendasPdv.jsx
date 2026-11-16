@@ -4,7 +4,6 @@ import ApiCentral from '../servicos/ClienteApiCentral';
 export const TelaHistoricoVendasPdv = () => {
   const [vendas, setVendas] = useState([]);
   const [filtroCaixa, setFiltroCaixa] = useState('');
-  const [mensagem, setMensagem] = useState('');
   const [carregando, setCarregando] = useState(false);
 
   useEffect(() => {
