@@ -1,8 +1,3 @@
 name = "genesis-altivon-sys"
 compatibility_date = "2026-01-01"
-
-[site]
-bucket = "./FrontEnd/dist"
-
-[vars]
-ENVIRONMENT = "production"
+pages_build_output_dir = "FrontEnd/build"
