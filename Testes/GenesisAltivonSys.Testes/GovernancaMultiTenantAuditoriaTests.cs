@@ -1,3 +1,4 @@
+using Xunit;
 using GenesisAltivonSys.BackEnd.CadastrosCorporativos.Clientes;
 using GenesisAltivonSys.Infraestrutura.BancoDeDados;
 using GenesisAltivonSys.Testes.Suporte;
