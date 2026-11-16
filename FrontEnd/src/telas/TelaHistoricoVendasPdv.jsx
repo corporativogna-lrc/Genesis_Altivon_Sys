@@ -50,11 +50,6 @@ export const TelaHistoricoVendasPdv = () => {
         </button>
       </div>
 
-      {mensagem && (
-        <div className="bg-[#1a1a1a] border border-[#c9a227] p-3 rounded-lg mb-6 text-xs text-[#c9a227] font-mono">
-          {mensagem}
-        </div>
-      )}
 
       <div className="bg-[#1a1a1a] p-6 rounded-xl border border-[#2a2a2a] mb-6">
         <div className="flex gap-4 items-center">
