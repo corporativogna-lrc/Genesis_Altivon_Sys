@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function Login() {
+export default function TelaLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  
+  const navigate = useNavigate();
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -19,7 +20,7 @@ function Login() {
         password
       });
       localStorage.setItem('token', response.data.token);
-      window.location.href = '/dashboard';
+      navigate('/cockpit');
     } catch (err) {
       setError('Credenciais inválidas ou erro de conexão com o servidor.');
     } finally {
@@ -92,16 +93,5 @@ function Login() {
         </div>
       </div>
     </div>
-  );
-}
-
-export default function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </BrowserRouter>
   );
 }

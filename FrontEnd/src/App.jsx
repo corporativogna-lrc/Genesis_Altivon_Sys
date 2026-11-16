@@ -21,6 +21,7 @@ import TelaGestaoUsuariosIam from './telas/TelaGestaoUsuariosIam';
 import TelaMonitoramentoInfraestrutura from './telas/TelaMonitoramentoInfraestrutura';
 import TelaGestaoWebhooks from './telas/TelaGestaoWebhooks';
 import TelaPainelAdministrativoReal from './telas/TelaPainelAdministrativoReal';
+import TelaLogin from './telas/TelaLogin';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           <Route path="/webhooks" element={<TelaGestaoWebhooks />} />
           <Route path="/admin-real" element={<TelaPainelAdministrativoReal />} />
           <Route path="*" element={<Navigate to="/cockpit" replace />} />
+		  <Route path="/login" element={<TelaLogin />} />
         </Routes>
       </InterceptorAutenticacao>
     </Router>
