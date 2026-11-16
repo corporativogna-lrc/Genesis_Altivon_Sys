@@ -13,6 +13,7 @@ using GenesisAltivonSys.BackEnd.EstoqueLogistica.ControleSaldosWMS;
 using GenesisAltivonSys.BackEnd.EstoqueLogistica.Transporte;
 using GenesisAltivonSys.BackEnd.GestaoCompras.PedidosRecebimentos;
 using GenesisAltivonSys.BackEnd.FiscalTributario.EmissaoDocumentos;
+using GenesisAltivonSys.BackEnd.ManufaturaOperacoes.OrdensProducao;
 
 namespace GenesisAltivonSys.Infraestrutura.BancoDeDados;
 
@@ -279,6 +280,9 @@ public class ContextoBancoRelacional : DbContext
 
     // Fase IX - Logística e Transporte (TMS)
     public DbSet<EntregaTransporteRegistro> EntregasTransporte => Set<EntregaTransporteRegistro>();
+
+    // Fase X - Manufatura e Operações (MES)
+    public DbSet<OrdemProducaoRegistro> OrdensProducao => Set<OrdemProducaoRegistro>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

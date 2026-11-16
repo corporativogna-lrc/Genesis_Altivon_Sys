@@ -8,6 +8,7 @@ using GenesisAltivonSys.BackEnd.EstoqueLogistica.ControleSaldosWMS;
 using GenesisAltivonSys.BackEnd.EstoqueLogistica.Transporte;
 using GenesisAltivonSys.BackEnd.GestaoCompras.PedidosRecebimentos;
 using GenesisAltivonSys.BackEnd.FiscalTributario.EmissaoDocumentos;
+using GenesisAltivonSys.BackEnd.ManufaturaOperacoes.OrdensProducao;
 using GenesisAltivonSys.Infraestrutura.BancoDeDados;
 using GenesisAltivonSys.Infraestrutura.Seguranca;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -128,5 +129,6 @@ app.MapearEndpointsEstoqueWms();
 app.MapearEndpointsCompras();
 app.MapearEndpointsFiscal();
 app.MapearEndpointsTransporte();
+app.MapearEndpointsManufaturaMes();
 
 app.Run();

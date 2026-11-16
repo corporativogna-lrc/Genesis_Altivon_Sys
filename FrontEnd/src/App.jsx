@@ -9,6 +9,7 @@ import TelaHistoricoVendasPdv from './telas/TelaHistoricoVendasPdv';
 import TelaGestaoEstoqueWms from './telas/TelaGestaoEstoqueWms';
 import TelaWmsSeparacaoPicking from './telas/TelaWmsSeparacaoPicking';
 import TelaLogisticaEntregas from './telas/TelaLogisticaEntregas';
+import TelaApontamentoMes from './telas/TelaApontamentoMes';
 import TelaGestaoCompras from './telas/TelaGestaoCompras';
 import TelaContasPagarReceber from './telas/TelaContasPagarReceber';
 import TelaEmissaoFiscal from './telas/TelaEmissaoFiscal';
@@ -33,6 +34,7 @@ function App() {
           <Route path="/wms" element={<TelaGestaoEstoqueWms />} />
           <Route path="/wms/separacao" element={<TelaWmsSeparacaoPicking />} />
           <Route path="/logistica/entregas" element={<TelaLogisticaEntregas />} />
+          <Route path="/mes/apontamento" element={<TelaApontamentoMes />} />
           <Route path="/compras" element={<TelaGestaoCompras />} />
           <Route path="/financeiro" element={<TelaContasPagarReceber />} />
           <Route path="/financeiro-avancado" element={<TelaPainelFinanceiroAvancado />} />
