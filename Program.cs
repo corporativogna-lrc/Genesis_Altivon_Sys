@@ -5,6 +5,7 @@ using GenesisAltivonSys.BackEnd.CadastrosCorporativos.ProdutosServicos;
 using GenesisAltivonSys.BackEnd.OperacaoPDV.VendaBalcao;
 using GenesisAltivonSys.BackEnd.FinanceiroContabil.ContasPagarReceber;
 using GenesisAltivonSys.BackEnd.EstoqueLogistica.ControleSaldosWMS;
+using GenesisAltivonSys.BackEnd.EstoqueLogistica.Transporte;
 using GenesisAltivonSys.BackEnd.GestaoCompras.PedidosRecebimentos;
 using GenesisAltivonSys.BackEnd.FiscalTributario.EmissaoDocumentos;
 using GenesisAltivonSys.Infraestrutura.BancoDeDados;
@@ -126,5 +127,6 @@ app.MapearEndpointsFinanceiro();
 app.MapearEndpointsEstoqueWms();
 app.MapearEndpointsCompras();
 app.MapearEndpointsFiscal();
+app.MapearEndpointsTransporte();
 
 app.Run();

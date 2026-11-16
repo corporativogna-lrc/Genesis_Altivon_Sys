@@ -10,6 +10,7 @@ using GenesisAltivonSys.BackEnd.CadastrosCorporativos.ProdutosServicos;
 using GenesisAltivonSys.BackEnd.OperacaoPDV.VendaBalcao;
 using GenesisAltivonSys.BackEnd.FinanceiroContabil.ContasPagarReceber;
 using GenesisAltivonSys.BackEnd.EstoqueLogistica.ControleSaldosWMS;
+using GenesisAltivonSys.BackEnd.EstoqueLogistica.Transporte;
 using GenesisAltivonSys.BackEnd.GestaoCompras.PedidosRecebimentos;
 using GenesisAltivonSys.BackEnd.FiscalTributario.EmissaoDocumentos;
 
@@ -275,6 +276,9 @@ public class ContextoBancoRelacional : DbContext
 
     // Fase VIII - Fiscal e Tributário
     public DbSet<DocumentoFiscalRegistro> DocumentosFiscais => Set<DocumentoFiscalRegistro>();
+
+    // Fase IX - Logística e Transporte (TMS)
+    public DbSet<EntregaTransporteRegistro> EntregasTransporte => Set<EntregaTransporteRegistro>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
