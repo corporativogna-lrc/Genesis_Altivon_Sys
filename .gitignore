@@ -20,3 +20,6 @@ dist/
 # Sistema
 .DS_Store
 Thumbs.db
+
+StorageDados/
+*.zip
